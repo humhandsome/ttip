@@ -16,11 +16,16 @@ app = FastAPI(
     docs_url="/docs",
     redoc_url="/redoc"
 )
-
+origins = [
+    "http://localhost:5173",
+    "http://localhost:3000",
+    "https://ttip-hu6.vercel.app",
+    "https://ttip-ildv.onrender.com",
+]
 # 配置CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.get_cors_origins_list(),
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
